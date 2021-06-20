@@ -15,6 +15,5 @@ gradient = np.uint8(gradient)
 
 mona_final = (image / gradient) 
 
-cv2.imwrite('mona_final.jpg', mona_final)
 cv2.imshow('out', mona_final) 
 cv2.waitKey()
