@@ -1,7 +1,7 @@
 import os
 import shutil
-srcPath = "Image_Processing\\Session_23\\EX_01\\MNIST_persian"
-targetPath = "Image_Processing\\Session_23\\EX_01\\Organaized"
+srcPath = "EX_01\\MNIST_persian"
+targetPath = "EX_01\\Organaized"
 allFolders = os.listdir(srcPath)
 
 for folder in allFolders:
