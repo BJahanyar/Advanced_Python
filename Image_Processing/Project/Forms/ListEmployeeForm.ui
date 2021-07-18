@@ -29,32 +29,43 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>350</y>
-      <width>671</width>
-      <height>301</height>
+      <x>140</x>
+      <y>110</y>
+      <width>451</width>
+      <height>261</height>
      </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
     </property>
     <column>
      <property name="text">
-      <string>NationalId</string>
+      <string>Item-01</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>FName</string>
+      <string>Item-02</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>LName</string>
+      <string>Item-03</string>
      </property>
     </column>
-    <column>
-     <property name="text">
-      <string>BirthDate</string>
-     </property>
-    </column>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>400</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

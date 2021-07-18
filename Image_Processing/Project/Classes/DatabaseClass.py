@@ -6,7 +6,7 @@ class My_Database:
 
     @staticmethod
     def select():
-        my_connection = connect('Image_Processing/Project/Database/MiniProjectDB.db')
+        my_connection = connect('Database/MiniProjectDB.db')
         my_corsor = my_connection.cursor()
         my_corsor.execute("SELECT * FROM Employee")
         result = my_corsor.fetchall()
