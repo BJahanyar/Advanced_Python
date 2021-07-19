@@ -6,6 +6,7 @@ class My_Employee():
         self.FName = ""
         self.LName = ""
         self.BDate = ""
+        self.PicPath = ""
 
 
 #*******************************************

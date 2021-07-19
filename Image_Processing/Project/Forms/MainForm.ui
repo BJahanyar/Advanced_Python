@@ -40,7 +40,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>701</width>
+      <width>711</width>
       <height>471</height>
      </rect>
     </property>
@@ -74,7 +74,7 @@
        <string>ثبت کارمند جدید</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="Add_FirstName_Edit">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -82,6 +82,9 @@
         <width>161</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="inputMask">
+       <string/>
       </property>
       <property name="text">
        <string/>
@@ -162,7 +165,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="Add_LastName_Edit">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -197,7 +200,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit">
+     <widget class="QDateEdit" name="Add_BirthDate_Edit">
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -248,7 +251,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="Add_NationalID_Edit">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -327,7 +330,7 @@
      <attribute name="title">
       <string>لیست کارمندان</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="EmployeesListTableWidget">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -384,9 +387,9 @@
      <widget class="QPushButton" name="ListEmployee_Button">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>330</x>
         <y>390</y>
-        <width>151</width>
+        <width>101</width>
         <height>41</height>
        </rect>
       </property>
@@ -399,6 +402,29 @@
       </property>
       <property name="text">
        <string>نمایش لیست</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ClearListEmployee_Button">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>390</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>پاک کردن</string>
       </property>
       <property name="checkable">
        <bool>false</bool>
@@ -420,15 +446,15 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>lineEdit_3</tabstop>
-  <tabstop>dateEdit</tabstop>
+  <tabstop>Add_FirstName_Edit</tabstop>
+  <tabstop>Add_LastName_Edit</tabstop>
+  <tabstop>Add_NationalID_Edit</tabstop>
+  <tabstop>Add_BirthDate_Edit</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>AddEmployee_Button</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>EditEmployee_Button</tabstop>
-  <tabstop>tableWidget</tabstop>
+  <tabstop>EmployeesListTableWidget</tabstop>
   <tabstop>ListEmployee_Button</tabstop>
  </tabstops>
  <resources/>

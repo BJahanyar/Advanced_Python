@@ -3,20 +3,25 @@ from sqlite3 import connect
 from Classes.EmployeeClass import My_Employee
 
 class My_Database:
-    def insert():
-        pass
 
     @staticmethod
-    def select():
+    def insert(employee):
+        query = f"INSERT INTO Employee(NationalId,FName,LName,BirthDate,PIC) VALUES('{employee.NationalID}','{employee.FName}','{employee.LName}','{employee.BDate}','{employee.PicPath}') "
+        my_connection = connect('Database/MiniProjectDB.db')
+        my_corsor = my_connection.cursor()
+        my_corsor.execute(query)
+        my_connection.commit()
+        my_connection.close()
+
+
+
+    @staticmethod
+    def Get_All_Employees():
         my_connection = connect('Database/MiniProjectDB.db')
         my_corsor = my_connection.cursor()
         my_corsor.execute("SELECT * FROM Employee")
-        result = my_corsor.fetchall()
-        my_corsor.close
-        return result
-
-    def Get_All_Employees():
-        DBResult = My_Database.select()
+        DBResult = my_corsor.fetchall()       
+        my_connection.close()
         result = []
         for item in DBResult:
             Temp = My_Employee()             
@@ -26,4 +31,5 @@ class My_Database:
             Temp.BDate = item[4]
             result.append(Temp)
         return result
+        
     
