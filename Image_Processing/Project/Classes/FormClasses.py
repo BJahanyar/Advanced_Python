@@ -2,6 +2,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QWidget, QTableWidget, QTableWidgetItem, QHeaderView, QVBoxLayout
 from Classes.DatabaseClass import My_Database
 
+
 class MainWindow(QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -23,31 +24,18 @@ class MainWindow(QWidget):
         self.EditEmployeeWin.show() 
 
     def openListEmployeeForm(self):
-        self.FillTable()
+        self.FillEmployeeListTable()
 
-    def FillTable(self):
-        EmployeesList = My_Database.select()
-        lenght = len(EmployeesList)
-        
-        table = self.ui.findChild(QWidget, "tableWidget")
-        for Employee in EmployeesList:
+    #****************************************************************
+    
+    def FillEmployeeListTable(self):
+        table = self.ui.findChild(QWidget, "tableWidget" )
+        EmployeesList = My_Database.Get_All_Employees()
+        for item in EmployeesList:
             rowPosition = table.rowCount()
             table.insertRow(rowPosition)
-            table.setItem(rowPosition,0, QTableWidgetItem(Employee[1]))
-            table.setItem(rowPosition,1, QTableWidgetItem(Employee[2]))
-            table.setItem(rowPosition,2, QTableWidgetItem(Employee[3]))
-            table.setItem(rowPosition,3, QTableWidgetItem(Employee[4]))
-        table.verticalHeader().setVisible(False)        
-
-      
-
-class addEmployeeWindows(QWidget):
-    def __init__(self):
-        super(addEmployeeWindows, self).__init__()
-
-class listEmployeeWindows(QWidget):
-    def __init__(self):
-        super(listEmployeeWindows, self).__init__()
-        self.ui.pushButton.clicked.connect(self.Test(self))
-
-
+            table.setItem(rowPosition, 0, QTableWidgetItem(item.NationalID))
+            table.setItem(rowPosition, 1, QTableWidgetItem(item.FName))
+            table.setItem(rowPosition, 2, QTableWidgetItem(item.LName))
+            table.setItem(rowPosition, 3, QTableWidgetItem(item.BDate))
+        table.verticalHeader().setVisible(False)

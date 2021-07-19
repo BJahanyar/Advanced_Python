@@ -1,0 +1,10 @@
+class addEmployeeWindows(QWidget):
+    def __init__(self):
+        super(addEmployeeWindows, self).__init__()
+
+class listEmployeeWindows(QWidget):
+    def __init__(self):
+        super(listEmployeeWindows, self).__init__()
+        self.ui.pushButton.clicked.connect(self.Test(self))
+
+
