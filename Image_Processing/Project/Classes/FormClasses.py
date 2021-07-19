@@ -1,7 +1,14 @@
+from PySide6.QtCore import Signal, Slot, Qt, QThread
+from PySide6.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout
+from PySide6.QtGui import QPixmap
+from PySide6 import QtGui
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
 from Classes.DatabaseClass import My_Database
 from Classes.EmployeeClass import My_Employee
+from Classes.VideoClasses import My_VideoThread
+import numpy as np
+import cv2
 
 class MainWindow(QWidget):
     
@@ -10,9 +17,13 @@ class MainWindow(QWidget):
         Loader = QUiLoader()
         self.ui = Loader.load("Forms/MainForm.ui")
         
+        self.disply_width = 640
+        self.display_height = 480
+
         #Add Employee Button
         self.ui.AddEmployee_Register_Button.clicked.connect(self.AddEmployee_Register_Button)        
         self.ui.AddEmployee_Clear_Button.clicked.connect(self.AddEmployee_Clear_Button)
+        self.ui.AddEmployee_Pic_Button.clicked.connect(self.AddEmployee_Pic_Button)
 
         #Edit Employee Button
         self.ui.EditEmployee_NationalIDSearch_Button.clicked.connect(self.EditEmployee_FindEmployee_Button)
@@ -24,6 +35,16 @@ class MainWindow(QWidget):
         self.ui.show()
 
     #***************** All Buttons *****************
+
+    def AddEmployee_Pic_Button(self):
+        self.image_label = self.ui.findChild(QWidget, "label_15")
+        
+        # create the video capture thread
+        self.thread = My_VideoThread()
+        # connect its signal to the update_image slot
+        self.thread.change_pixmap_signal.connect(self.update_image)
+        # start the thread
+        self.thread.start()
 
     def AddEmployee_Register_Button(self):
         self.save_New_Employee()
@@ -134,4 +155,23 @@ class MainWindow(QWidget):
             table.setItem(rowPosition, 1, QTableWidgetItem(item.FName))
             table.setItem(rowPosition, 2, QTableWidgetItem(item.LName))
             table.setItem(rowPosition, 3, QTableWidgetItem(item.BDate))
-        table.verticalHeader().setVisible(False)          
+        table.verticalHeader().setVisible(False)
+
+    #***************** List Employee *****************
+    @Slot(np.ndarray)
+    def update_image(self, cv_img):
+        """Updates the image_label with a new opencv image"""
+        qt_img = self.convert_cv_qt(cv_img)
+        self.image_label.setPixmap(qt_img)
+    
+    def convert_cv_qt(self, cv_img):
+        """Convert from an opencv image to QPixmap"""
+        rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
+        h, w, ch = rgb_image.shape
+        bytes_per_line = ch * w
+        convert_to_Qt_format = QtGui.QImage(rgb_image.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
+        p = convert_to_Qt_format.scaled(self.disply_width, self.display_height, Qt.KeepAspectRatio)
+        return QPixmap.fromImage(p)
+
+class CameraForm():
+    pass
