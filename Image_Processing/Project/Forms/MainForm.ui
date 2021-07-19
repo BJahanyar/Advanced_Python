@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>650</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>700</width>
-    <height>650</height>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>700</width>
-    <height>650</height>
+    <height>500</height>
    </size>
   </property>
   <property name="font">
@@ -29,10 +29,13 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>نرم افزار ذخیره سازی اطلاعات کاربران</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::RightToLeft</enum>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -41,25 +44,37 @@
       <x>0</x>
       <y>0</y>
       <width>711</width>
-      <height>471</height>
+      <height>501</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>B Nazanin</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="layoutDirection">
      <enum>Qt::RightToLeft</enum>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
       <string>ثبت کارمند جدید</string>
      </attribute>
-     <widget class="QPushButton" name="AddEmployee_Button">
+     <widget class="QPushButton" name="AddEmployee_Register_Button">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>380</y>
-        <width>151</width>
+        <y>400</y>
+        <width>121</width>
         <height>41</height>
        </rect>
       </property>
@@ -94,7 +109,7 @@
       <property name="geometry">
        <rect>
         <x>230</x>
-        <y>30</y>
+        <y>0</y>
         <width>261</width>
         <height>71</height>
        </rect>
@@ -132,6 +147,7 @@
       </property>
       <property name="font">
        <font>
+        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -154,6 +170,7 @@
       </property>
       <property name="font">
        <font>
+        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -189,6 +206,7 @@
       </property>
       <property name="font">
        <font>
+        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -236,7 +254,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>100</y>
+        <y>60</y>
         <width>691</width>
         <height>20</height>
        </rect>
@@ -300,17 +318,12 @@
        <string>انتخاب عکس</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>ویرایش اطلاعات</string>
-     </attribute>
-     <widget class="QPushButton" name="EditEmployee_Button">
+     <widget class="QPushButton" name="AddEmployee_Clear_Button">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>390</y>
-        <width>151</width>
+        <x>140</x>
+        <y>400</y>
+        <width>121</width>
         <height>41</height>
        </rect>
       </property>
@@ -322,7 +335,335 @@
        </font>
       </property>
       <property name="text">
-       <string>ویرایش اطلاعات کارمند</string>
+       <string>پاک سازی فرم</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>ویرایش اطلاعات</string>
+     </attribute>
+     <widget class="QPushButton" name="EditEmployee_NationalIDSearch_Button">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>120</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>جستجو</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Edit_NationalIDSearch_Edit">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>120</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>120</y>
+        <width>281</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>16</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>شماره ملی فرد مورد نظر را وارد کنید :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>691</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>0</y>
+        <width>261</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>20</pointsize>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>فرم ویرایش اطلاعات کارمند</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Edit_NationalID_Edit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>260</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Edit_LastName_Edit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>220</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>170</y>
+        <width>191</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>340</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>انتخاب عکس</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>220</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>نام خانوادگی :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>260</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>شماره ملی :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>300</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>تاریخ تولد :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>180</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>نام :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Edit_FirstName_Edit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>180</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="Edit_BirthDate_Edit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>300</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="EditEmployee_Save_Button">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>400</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>ذخیره تغییرات</string>
       </property>
      </widget>
     </widget>
@@ -336,10 +677,10 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>701</width>
-        <height>381</height>
+        <x>-10</x>
+        <y>80</y>
+        <width>711</width>
+        <height>291</height>
        </rect>
       </property>
       <property name="font">
@@ -384,7 +725,7 @@
        </property>
       </column>
      </widget>
-     <widget class="QPushButton" name="ListEmployee_Button">
+     <widget class="QPushButton" name="ListEmployee_List_Button">
       <property name="geometry">
        <rect>
         <x>330</x>
@@ -407,7 +748,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="ClearListEmployee_Button">
+     <widget class="QPushButton" name="ListEmployee_Clear_Button">
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -430,18 +771,58 @@
        <bool>false</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>0</y>
+        <width>261</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>B Nazanin</family>
+        <pointsize>20</pointsize>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>لیست کلیه کارمندان</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>701</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>2</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>700</width>
-     <height>30</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
@@ -451,11 +832,11 @@
   <tabstop>Add_NationalID_Edit</tabstop>
   <tabstop>Add_BirthDate_Edit</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>AddEmployee_Button</tabstop>
+  <tabstop>AddEmployee_Register_Button</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>EditEmployee_Button</tabstop>
+  <tabstop>EditEmployee_NationalIDSearch_Button</tabstop>
   <tabstop>EmployeesListTableWidget</tabstop>
-  <tabstop>ListEmployee_Button</tabstop>
+  <tabstop>ListEmployee_List_Button</tabstop>
  </tabstops>
  <resources/>
  <connections/>
