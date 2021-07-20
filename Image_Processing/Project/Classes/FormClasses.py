@@ -1,25 +1,28 @@
-from PySide6.QtCore import Signal, Slot, Qt, QThread
-from PySide6.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout
-from PySide6.QtGui import QPixmap
-from PySide6 import QtGui
+from PySide6.QtWidgets import QWidget, QMainWindow
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
+from PySide6.QtCore import Slot, Qt 
+from PySide6.QtGui import QPixmap
+from PySide6 import QtGui
+from numpy.lib.function_base import select
 from Classes.DatabaseClass import My_Database
 from Classes.EmployeeClass import My_Employee
-from Classes.VideoClasses import My_VideoThread
+from Classes.VideoClasses import My_Video, My_Pic
 import numpy as np
 import cv2
 
-class MainWindow(QWidget):
+class MainWindow(QMainWindow):
     
     def __init__(self):
         super(MainWindow, self).__init__()
         Loader = QUiLoader()
         self.ui = Loader.load("Forms/MainForm.ui")
-        
+        self.CameraForm = Loader.load("Forms/CameraForm.ui")
         self.disply_width = 640
         self.display_height = 480
-
+        self.SelectedPicture = ""
+        self.SelectedPicture_qt = ""
+        self.SelectedPicture_nd = ""
         #Add Employee Button
         self.ui.AddEmployee_Register_Button.clicked.connect(self.AddEmployee_Register_Button)        
         self.ui.AddEmployee_Clear_Button.clicked.connect(self.AddEmployee_Clear_Button)
@@ -34,17 +37,37 @@ class MainWindow(QWidget):
         self.ui.ListEmployee_Clear_Button.clicked.connect(self.ClearListEmployee_Button)
         self.ui.show()
 
+        #CameraForm
+        self.CameraForm.Camera_SavePicture_Button.clicked.connect(self.Camera_SavePicture_Button)
+
     #***************** All Buttons *****************
 
     def AddEmployee_Pic_Button(self):
-        self.image_label = self.ui.findChild(QWidget, "label_15")
-        
-        # create the video capture thread
-        self.thread = My_VideoThread()
-        # connect its signal to the update_image slot
-        self.thread.change_pixmap_signal.connect(self.update_image)
-        # start the thread
-        self.thread.start()
+        newForm = self.CameraForm
+        newForm.Picture01 = newForm.findChild(QWidget, "Picture01")
+        newForm.Picture02 = newForm.findChild(QWidget, "Picture02")
+        newForm.Picture03 = newForm.findChild(QWidget, "Picture03")
+        newForm.Picture04 = newForm.findChild(QWidget, "Picture04")
+        newForm.Picture05 = newForm.findChild(QWidget, "Picture05")
+        newForm.Picture06 = newForm.findChild(QWidget, "Picture06")
+        newForm.Picture07 = newForm.findChild(QWidget, "Picture07")
+        newForm.Picture08 = newForm.findChild(QWidget, "Picture08")
+        newForm.Picture09 = newForm.findChild(QWidget, "Picture09")        
+        newForm.Picture01.setScaledContents(True)
+        newForm.Picture02.setScaledContents(True)
+        newForm.Picture03.setScaledContents(True)
+        newForm.Picture04.setScaledContents(True)
+        newForm.Picture05.setScaledContents(True)
+        newForm.Picture06.setScaledContents(True)
+        newForm.Picture07.setScaledContents(True)
+        newForm.Picture08.setScaledContents(True)
+        newForm.Picture09.setScaledContents(True)
+
+        newForm.thread = My_Video()
+        newForm.thread.change_pixmap_signal.connect(self.update_image)
+        newForm.thread.start()
+
+        newForm.show()
 
     def AddEmployee_Register_Button(self):
         self.save_New_Employee()
@@ -64,6 +87,13 @@ class MainWindow(QWidget):
     def ListEmployee_Button(self):
         self.FillEmployeeListTable()
 
+    def Camera_SavePicture_Button(self):
+        w = self.ui.findChild(QWidget, "Add_EmployeePicture_Label")
+        pic = My_Pic.faceDetection(self.SelectedPicture)        
+        w.setPixmap(self.convert_cv_qt(pic))
+        w.setScaledContents(True)
+        self.CameraForm.close()
+        
     #***************** Add Employee *****************
 
     def save_New_Employee(self):
@@ -76,7 +106,8 @@ class MainWindow(QWidget):
             tempDate = str.replace(tempDate,",","/")
             tempDate = tempDate[1:len(tempDate)-1].replace(" ","")
             e.BDate = tempDate
-            e.PicPath = "C:/asasd/asdasd"
+            e.PicPath = f"EmployeesPicture/{e.NationalID}.jpg"
+            cv2.imwrite(f"EmployeesPicture/{e.NationalID}.jpg",self.SelectedPicture)
             My_Database.insert(e)
             self.AddEmployee_Clear_Form()
             return True
@@ -87,7 +118,7 @@ class MainWindow(QWidget):
         self.ui.findChild(QWidget, "Add_FirstName_Edit" ).setText("")
         self.ui.findChild(QWidget, "Add_LastName_Edit" ).setText("")
         self.ui.findChild(QWidget, "Add_NationalID_Edit" ).setText("")
-
+      
     #***************** Edit Employee *****************
 
     def clear_EditForm_Data(self):
@@ -157,21 +188,26 @@ class MainWindow(QWidget):
             table.setItem(rowPosition, 3, QTableWidgetItem(item.BDate))
         table.verticalHeader().setVisible(False)
 
-    #***************** List Employee *****************
+
     @Slot(np.ndarray)
     def update_image(self, cv_img):
-        """Updates the image_label with a new opencv image"""
-        qt_img = self.convert_cv_qt(cv_img)
-        self.image_label.setPixmap(qt_img)
-    
-    def convert_cv_qt(self, cv_img):
-        """Convert from an opencv image to QPixmap"""
+        self.SelectedPicture = cv_img
+        self.SelectedPicture_qt = self.convert_cv_qt(cv_img)
+
+        self.CameraForm.Picture01.setPixmap(self.convert_cv_qt(My_Video.filter01(cv_img)))
+        self.CameraForm.Picture02.setPixmap(self.convert_cv_qt(My_Video.filter02(cv_img)))
+        self.CameraForm.Picture03.setPixmap(self.convert_cv_qt(My_Video.filter03(cv_img)))
+        self.CameraForm.Picture04.setPixmap(self.convert_cv_qt(My_Video.filter04(cv_img)))
+        self.CameraForm.Picture05.setPixmap(self.convert_cv_qt(cv_img))
+        self.CameraForm.Picture06.setPixmap(self.convert_cv_qt(My_Video.filter05(cv_img)))
+        self.CameraForm.Picture07.setPixmap(self.convert_cv_qt(My_Video.filter06(cv_img)))
+        self.CameraForm.Picture08.setPixmap(self.convert_cv_qt(My_Video.filter07(cv_img)))
+        self.CameraForm.Picture09.setPixmap(self.convert_cv_qt(My_Video.filter08(cv_img)))    
+
+    def convert_cv_qt(self, cv_img):    
         rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
         h, w, ch = rgb_image.shape
         bytes_per_line = ch * w
         convert_to_Qt_format = QtGui.QImage(rgb_image.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
         p = convert_to_Qt_format.scaled(self.disply_width, self.display_height, Qt.KeepAspectRatio)
         return QPixmap.fromImage(p)
-
-class CameraForm():
-    pass

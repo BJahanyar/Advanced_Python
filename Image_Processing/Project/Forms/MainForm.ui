@@ -63,7 +63,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -73,7 +73,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>400</y>
+        <y>390</y>
         <width>121</width>
         <height>41</height>
        </rect>
@@ -228,14 +228,26 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="Add_EmployeePicture_Label">
       <property name="geometry">
        <rect>
         <x>110</x>
         <y>130</y>
-        <width>191</width>
-        <height>161</height>
+        <width>200</width>
+        <height>150</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>150</height>
+       </size>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -305,7 +317,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="AddEmployee_Pic_Button">
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -322,7 +334,7 @@
       <property name="geometry">
        <rect>
         <x>140</x>
-        <y>400</y>
+        <y>390</y>
         <width>121</width>
         <height>41</height>
        </rect>
@@ -831,7 +843,7 @@
   <tabstop>Add_LastName_Edit</tabstop>
   <tabstop>Add_NationalID_Edit</tabstop>
   <tabstop>Add_BirthDate_Edit</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>AddEmployee_Pic_Button</tabstop>
   <tabstop>AddEmployee_Register_Button</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>EditEmployee_NationalIDSearch_Button</tabstop>

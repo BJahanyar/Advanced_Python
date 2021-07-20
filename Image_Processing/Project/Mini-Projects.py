@@ -5,4 +5,3 @@ from Classes.FormClasses import MainWindow
 app = QApplication([])
 widget = MainWindow()
 sys.exit(app.exec())
-
