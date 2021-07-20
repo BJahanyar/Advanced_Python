@@ -26,6 +26,7 @@
    <font>
     <family>B Nazanin</family>
     <pointsize>12</pointsize>
+    <bold>true</bold>
    </font>
   </property>
   <property name="windowTitle">
@@ -51,6 +52,7 @@
      <font>
       <family>B Nazanin</family>
       <pointsize>12</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -80,7 +82,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -116,7 +117,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>20</pointsize>
         <bold>true</bold>
         <underline>false</underline>
@@ -147,7 +147,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -170,7 +169,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -206,7 +204,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -305,7 +302,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -341,7 +337,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -366,7 +361,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -392,14 +386,13 @@
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>120</y>
+        <y>110</y>
         <width>281</width>
-        <height>21</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>16</pointsize>
         <bold>true</bold>
        </font>
@@ -441,7 +434,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>20</pointsize>
         <bold>true</bold>
         <underline>false</underline>
@@ -493,17 +485,29 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="Edit_EmployeePicture_Label">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
         <x>80</x>
         <y>170</y>
-        <width>191</width>
-        <height>161</height>
+        <width>200</width>
+        <height>150</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>150</height>
+       </size>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -545,7 +549,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -568,7 +571,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -591,7 +593,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -614,7 +615,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -669,7 +669,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -699,6 +698,7 @@
        <font>
         <family>B Nazanin</family>
         <pointsize>11</pointsize>
+        <bold>true</bold>
        </font>
       </property>
       <property name="layoutDirection">
@@ -716,6 +716,11 @@
       <property name="verticalScrollMode">
        <enum>QAbstractItemView::ScrollPerPixel</enum>
       </property>
+      <column>
+       <property name="text">
+        <string>تصویر</string>
+       </property>
+      </column>
       <column>
        <property name="text">
         <string>شماره ملی</string>
@@ -748,7 +753,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -771,7 +775,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -794,7 +797,6 @@
       </property>
       <property name="font">
        <font>
-        <family>B Nazanin</family>
         <pointsize>20</pointsize>
         <bold>true</bold>
         <underline>false</underline>

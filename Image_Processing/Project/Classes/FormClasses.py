@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QMainWindow
+from PySide6.QtWidgets import QLabel, QWidget, QMainWindow
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
 from PySide6.QtCore import Slot, Qt 
@@ -23,6 +23,7 @@ class MainWindow(QMainWindow):
         self.SelectedPicture = ""
         self.SelectedPicture_qt = ""
         self.SelectedPicture_nd = ""
+        self.SelectedPicture_Crop = ""
         #Add Employee Button
         self.ui.AddEmployee_Register_Button.clicked.connect(self.AddEmployee_Register_Button)        
         self.ui.AddEmployee_Clear_Button.clicked.connect(self.AddEmployee_Clear_Button)
@@ -89,9 +90,10 @@ class MainWindow(QMainWindow):
 
     def Camera_SavePicture_Button(self):
         w = self.ui.findChild(QWidget, "Add_EmployeePicture_Label")
-        pic = My_Pic.faceDetection(self.SelectedPicture)        
-        w.setPixmap(self.convert_cv_qt(pic))
+        self.SelectedPicture_Crop = My_Pic.faceDetection(self.SelectedPicture)        
+        w.setPixmap(self.convert_cv_qt(self.SelectedPicture_Crop))
         w.setScaledContents(True)
+        w.setVisible(True)
         self.CameraForm.close()
         
     #***************** Add Employee *****************
@@ -107,7 +109,7 @@ class MainWindow(QMainWindow):
             tempDate = tempDate[1:len(tempDate)-1].replace(" ","")
             e.BDate = tempDate
             e.PicPath = f"EmployeesPicture/{e.NationalID}.jpg"
-            cv2.imwrite(f"EmployeesPicture/{e.NationalID}.jpg",self.SelectedPicture)
+            cv2.imwrite(f"EmployeesPicture/{e.NationalID}.jpg",self.SelectedPicture_Crop)
             My_Database.insert(e)
             self.AddEmployee_Clear_Form()
             return True
@@ -118,7 +120,8 @@ class MainWindow(QMainWindow):
         self.ui.findChild(QWidget, "Add_FirstName_Edit" ).setText("")
         self.ui.findChild(QWidget, "Add_LastName_Edit" ).setText("")
         self.ui.findChild(QWidget, "Add_NationalID_Edit" ).setText("")
-      
+        self.ui.findChild(QWidget, "Add_EmployeePicture_Label" ).setVisible(False)
+  
     #***************** Edit Employee *****************
 
     def clear_EditForm_Data(self):
@@ -145,6 +148,11 @@ class MainWindow(QMainWindow):
         self.ui.findChild(QWidget, "Edit_NationalID_Edit").setText(employee.NationalID) 
         self.ui.findChild(QWidget, "Edit_FirstName_Edit").setText(employee.FName)
         self.ui.findChild(QWidget, "Edit_LastName_Edit").setText(employee.LName)
+        w = self.ui.findChild(QWidget, "Edit_EmployeePicture_Label")
+        image = cv2.imread(employee.PicPath)
+        w.setPixmap(self.convert_cv_qt(image))
+        w.setScaledContents(True)
+        w.setVisible(True)        
 
     def find_Employee(self, nationalId):
         result = My_Database.get_Employee_By_NationalId(nationalId)
@@ -182,12 +190,17 @@ class MainWindow(QMainWindow):
         for item in EmployeesList:
             rowPosition = table.rowCount()
             table.insertRow(rowPosition)
-            table.setItem(rowPosition, 0, QTableWidgetItem(item.NationalID))
-            table.setItem(rowPosition, 1, QTableWidgetItem(item.FName))
-            table.setItem(rowPosition, 2, QTableWidgetItem(item.LName))
-            table.setItem(rowPosition, 3, QTableWidgetItem(item.BDate))
+            #X = QTableWidgetItem
+            #tableItem = QTableWidgetItem
+            #tableItem.setIcon(f"EmployeesPicture/{item.NationalID}.jpg")
+            #table.setItem(rowPosition, 0, QTableWidgetItem(tableItem))            
+            table.setItem(rowPosition, 1, QTableWidgetItem(item.NationalID))
+            table.setItem(rowPosition, 2, QTableWidgetItem(item.FName))
+            table.setItem(rowPosition, 3, QTableWidgetItem(item.LName))
+            table.setItem(rowPosition, 4, QTableWidgetItem(item.BDate))
         table.verticalHeader().setVisible(False)
 
+    #***************** Camera *****************
 
     @Slot(np.ndarray)
     def update_image(self, cv_img):
