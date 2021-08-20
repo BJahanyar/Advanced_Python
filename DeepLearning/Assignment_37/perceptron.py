@@ -10,31 +10,29 @@ Y_train = np.array(data[:, 2])
 N = X_train.shape[0]
 
 lr = 0.001
-w = np.random.rand(2, 1 )
+w = np.random.rand(2, 1)
 
-x = np.arange(X_train[:,0].min(),X_train[:,0].max(), 0.01)
-y = np.arange(X_train[:,1].min(),X_train[:,1].max(), 0.01 )
+x_range = np.arange(X_train[:, 0].min(), X_train[:, 0].max(), 0.01)
+y_range = np.arange(X_train[:, 1].min(), X_train[:, 1].max(), 0.01)
+
+fig = plt.figure(figsize=(6,6))
+ax = fig.add_subplot(111,projection='3d')
 
 for i in range (N):
+    print("Shape of X_train is ---->" , X_train.shape)
     #TRAIN
-    y_pred = np.matmul(X_train[i , :] , w)
+    y_pred = np.matmul(X_train[i] , w)
     e = Y_train[i] - y_pred
-    w = w + e * lr * X_train[i ,:]
-
-    #PLOT
-    Y_pred = np.matmul(X_train , w)
-
-    fig = plt.figure(figsize=(8,8))
-    ax = fig.add_subplot(111,projection='3d')
-
-    x,y = np.meshgrid(x,y)
-    z = w[0] * x + w[1] * y
+    w = w + lr * X_train[i, :].T * e
 
     ax.clear()
-    ax.plot_surface(x, y, z, alpha=0.4)
+    x, y = np.meshgrid(x_range, y_range)
+    z = w[0] * x + w[1] * y
+
+    ax.plot_surface(x, y, z, rstride=1, cstride=1, alpha=0.4)
     ax.scatter(X_train[:,0], X_train[:,1], Y_train , c='black')
     ax.set_xlabel('X1')
     ax.set_ylabel('X2')
     ax.set_zlabel('Y')
     plt.pause(0.01)
-    plt.show()
+plt.show()
