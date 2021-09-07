@@ -79,7 +79,7 @@ class Snake():
         
     def game_over(self):
         self.speed = 0
-        font_go = pygame.font.Font('font/LATINWD.ttf', 46)
+        font_go = pygame.font.Font('Mini_Project_Snake_AI\font\LATINWD.ttf', 46)
         text_go = font_go.render('Game Over!!!', True, (255, 255, 255), (0, 0, 0))
         textRect_go = text_go.get_rect()
         textRect_go.center = (300, 300)
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     apple = Apple(dsply)
     
     # core 
-    font = pygame.font.Font('font/LATINWD.ttf', 32)
+    font = pygame.font.Font('Mini_Project_Snake_AI\font\LATINWD.ttf', 32)
     text = font.render('Score: 0', True, (255, 255, 255))
     textRect = text.get_rect()
     textRect.center = (width // 2, 30)
