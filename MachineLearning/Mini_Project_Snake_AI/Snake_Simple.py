@@ -3,8 +3,8 @@ import random
 
 class Apple():
     def __init__(self, display):
-        self.x = random.randint(65, 630)
-        self.y = random.randint(65, 530)
+        self.x = random.randint(0, width)
+        self.y = random.randint(0, height)
         self.r = 10
         self.dsply = display
         self.color=(255,0,0)
@@ -18,8 +18,8 @@ class Snake():
         self.dsply = display
         self.w = 16
         self.h = 16
-        self.x = 350
-        self.y = 300
+        self.x = width / 2
+        self.y = height / 2
         self.color = (0, 250, 0)
         self.color2 = (0, 100, 0)
         self.name = 'Bahar'
@@ -60,7 +60,7 @@ class Snake():
             self.y += self.speed
 
         #game over
-        if self.x <= 50 or self.x >= 634 or self.y <= 50 or self.y >= 534:
+        if self.x <= 50 or self.x >= 750 or self.y <= 50 or self.y >= 650:
             self.game_over()
 
         #speed
@@ -79,27 +79,27 @@ class Snake():
         
     def game_over(self):
         self.speed = 0
-        font_go = pygame.font.Font('Mini_Project_Snake_AI\font\LATINWD.ttf', 46)
+        font_go = pygame.font.Font('font/LATINWD.ttf', 46)
         text_go = font_go.render('Game Over!!!', True, (255, 255, 255), (0, 0, 0))
         textRect_go = text_go.get_rect()
-        textRect_go.center = (300, 300)
+        textRect_go.center = (width / 2 , height / 2)
         self.dsply.blit(text_go, textRect_go)
 pygame.init()
 
 
 if __name__ == "__main__":
-    width = 700
-    height = 600
+    width = 800
+    height = 700
 
     dsply = pygame.display.set_mode((width, height))
-    pygame.display.set_caption('Super Snake') 
+    pygame.display.set_caption('Snake') 
     clock = pygame.time.Clock()
     
     snake = Snake(dsply)
     apple = Apple(dsply)
     
     # core 
-    font = pygame.font.Font('Mini_Project_Snake_AI\font\LATINWD.ttf', 32)
+    font = pygame.font.Font('font/LATINWD.ttf', 32)
     text = font.render('Score: 0', True, (255, 255, 255))
     textRect = text.get_rect()
     textRect.center = (width // 2, 30)
