@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 class Apple():
     def __init__(self, display):
         self.x = random.randint(0, width)
@@ -79,8 +80,7 @@ class Snake():
         
     def game_over(self):
         self.speed = 0
-        font_go = pygame.font.Font('font/LATINWD.ttf', 46)
-        text_go = font_go.render('Game Over!!!', True, (255, 255, 255), (0, 0, 0))
+        text_go = font.render('Game Over!!!', True, (255, 255, 255), (0, 0, 0))
         textRect_go = text_go.get_rect()
         textRect_go.center = (width / 2 , height / 2)
         self.dsply.blit(text_go, textRect_go)
@@ -98,8 +98,8 @@ if __name__ == "__main__":
     snake = Snake(dsply)
     apple = Apple(dsply)
     
-    # core 
-    font = pygame.font.Font('font/LATINWD.ttf', 32)
+    # Score 
+    font = pygame.font.SysFont('didot.ttf', 40)
     text = font.render('Score: 0', True, (255, 255, 255))
     textRect = text.get_rect()
     textRect.center = (width // 2, 30)
